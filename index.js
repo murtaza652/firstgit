@@ -5,11 +5,13 @@ const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
 
 myForm.addEventListener('submit', onSubmit);
-
 function onSubmit(e) {
-
-  e.preventDefault();
-
-  localStorage.setItem(nameInput.value, emailInput.value);
+  let myObj={
+    name:nameInput.value,
+    email:emailInput.value
+  };
+  myObj=JSON.stringify(myObj);
+  e.preventDefault(); 
+  localStorage.setItem("custdetails",myObj);
 
   }
