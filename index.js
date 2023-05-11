@@ -12,6 +12,6 @@ function onSubmit(e) {
   };
   myObj=JSON.stringify(myObj);
   e.preventDefault(); 
-  localStorage.setItem("custdetails",myObj);
+  localStorage.setItem(emailInput.value,myObj);
 
   }
