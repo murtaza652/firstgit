@@ -29,21 +29,31 @@ function onSubmit(e){
     li.appendChild(document.createTextNode(" "));
     // Create del button element
     var deleteBtn = document.createElement('button');
+    var editBtn= document.createElement('button');
     // Add classes to del button
     deleteBtn.className = 'btn-sm float-right delete';
+    editBtn.className="btn-sm float-right edit"
     // Append text node
-    deleteBtn.appendChild(document.createTextNode('delete'));  
+    deleteBtn.appendChild(document.createTextNode('delete'));
+    editBtn.appendChild(document.createTextNode('edit'));  
     // Append button to li
     li.appendChild(deleteBtn);
+    li.appendChild(document.createTextNode(" "));
+    li.appendChild(editBtn);
     // Append li to list
     itemList.appendChild(li);
   }  
   function removeItem(e){
     if(e.target.classList.contains('delete')){
-      if(confirm('Are You Sure?')){
-        var li = e.target.parentElement;
-        localStorage.removeItem(li.firstChild.nextSibling.nextSibling.nodeValue);
-        itemList.removeChild(li); 
-      }
+      var li = e.target.parentElement;
+      localStorage.removeItem(li.firstChild.nextSibling.nextSibling.nodeValue);
+      itemList.removeChild(li); 
     }
+    if(e.target.classList.contains('edit')){
+      var li = e.target.parentElement;
+      emailInput.value=li.firstChild.nextSibling.nextSibling.nodeValue;
+      nameInput.value=li.firstChild.nodeValue;
+      localStorage.removeItem(li.firstChild.nextSibling.nextSibling.nodeValue);
+      itemList.removeChild(li);
   }
+}
